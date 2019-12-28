@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bouncing ball</title>
+        <link rel="stylesheet" href="ball.css">
+        <script type="text/javascript" src="/home/gameboyjst/webDevelopmentCodes/self made project/bouncing ball/lib/paper-js/paper-full.js"></script>
+        <script type="text/paperscript" canvas="myCanvas">
+            var circle = new Path.Circle(new Point(view.center), 30);
+            circle.fillColor="red";
+            var destination = new Point(20,Point.random().y * view.size.height) ;
+            console.log(view.size.width);
+            var count = 0;
+            function onFrame(event){
+                var difference = destination - circle.position;
+                circle.position += difference/30; 
+              
+
+                if(difference.length<10){
+                    if(count==0){
+                        destination = new Point(Point.random().x *view.size.width,20);
+                        while(count===0){
+                        count=Math.floor(Math.random()*4);
+                        }
+                        //console.log(1);
+                    }
+                    else if(count==1){
+                        destination = new Point(view.size.width - 20,Point.random().y * view.size.height);
+                        while(count===1){
+                            count=Math.floor(Math.random()*4);
+                            }
+                            //console.log(2);
+
+                    }
+                    else if(count==2){
+                        destination = new Point(Point.random().x * view.size.width, view.size.height -20);
+                        while(count===2){
+                            count=Math.floor(Math.random()*4);
+                            }
+                            //console.log(3);
+
+                    }
+                    else if(count==3){
+                        destination = new Point(20,Point.random().y * view.size.height) ;
+                        while(count===3){
+                            count=Math.floor(Math.random()*4);
+                            }
+                           // console.log(4);
+
+                    }  
+                   // destination = new Point.random() * view.size;
+                    circle.fillColor.hue += 100;
+                }
+               
+                
+            };
+           
+        </script>
+    </head>
+    <body>
+        <canvas id="myCanvas" resize></canvas>
+    </body>
+    </html>
